@@ -10,6 +10,21 @@
 </head>
 <body>
 <?php require_once('process.php'); ?>
+<?php
+    $mysqli = new mysqli('localhost', 'root', '', 'crudbasic') or die(mysqli_error($mysqli));
+    $result = $mysqli->query("SELECT * FROM data");
+    $row = $result->fetch_assoc();
+    $row =$result->fetch_assoc();
+?>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+        </tr>
+        </thead>
+    </table>
+
 <form action="process.php" method="POST">
     <label for="">Name</label>
     <input type="text" name="name" placeholder="Enter name"></input>
