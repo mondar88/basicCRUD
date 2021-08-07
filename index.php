@@ -9,12 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </head>
 <body>
-<form action="" name="form">
+<?php require_once('process.php'); ?>
+<form action="process.php" method="POST">
     <label for="">Name</label>
     <input type="text" name="name" placeholder="Enter name"></input>
     <label for="">Location</label>
     <input type="text" name="location" placeholder="Enter location"></input>
-    <button>Submit</button>
+    <button type="submit" name="save" >Submit</button>
 </form>
     
 </body>
