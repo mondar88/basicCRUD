@@ -13,25 +13,49 @@
 <?php
     $mysqli = new mysqli('localhost', 'root', '', 'crudbasic') or die(mysqli_error($mysqli));
     $result = $mysqli->query("SELECT * FROM data");
-    $row = $result->fetch_assoc();
-    $row =$result->fetch_assoc();
 ?>
-    <table>
+<div class="container">
+  <div class="row justify-content-center">
+  <table class="table">
         <thead>
         <tr>
             <th>Name</th>
             <th>Location</th>
+            <th colspan="2">Controls</th>
         </tr>
         </thead>
+        <?php while($row =$result->fetch_assoc()): ?>
+        <tr>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['location']; ?></td>
+            <td>
+              <a class="btn btn-info">Edit</a>
+              <a class="btn btn-danger" href="process.php?delete=<?php echo $row['id']; ?>">Delete</a>
+            </td>
+        </tr>
+        <?php endwhile ?>
     </table>
-
+  </div>
+  <div class="container">
+  <div class = "row justify-content-center">
 <form action="process.php" method="POST">
-    <label for="">Name</label>
-    <input type="text" name="name" placeholder="Enter name"></input>
-    <label for="">Location</label>
-    <input type="text" name="location" placeholder="Enter location"></input>
-    <button type="submit" name="save" >Submit</button>
+    <div class="form-group">
+        <label class="form-label">Name</label>
+        <input type="text" name="name" placeholder="Enter name" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Location</label>
+        <input type="text" name="location" placeholder="Enter location" class="form-control"></input>
+    </div>
+    <div class="form-group">
+        <button type="submit" name="save" class="btn btn-primary">Submit</button>
+    </div>
 </form>
+</div>
+
+  </div>
+
+  </div>
     
 </body>
 </html>
